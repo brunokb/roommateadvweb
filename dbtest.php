@@ -1,27 +1,20 @@
 <?php
 # Fill our vars and run on cli
 # $ php -f db-connect-test.php
-
-$dbname = 'id9561485_roommateadvweb';
-$dbuser = 'id9561485_6931';
-$dbpass = 'ait1234@!';
-$dbhost = 'localhost';
-
-$link = mysqli_connect($dbhost, $dbuser, $dbpass) or die("Unable to Connect to '$dbhost'");
-mysqli_select_db($link, $dbname) or die("Could not open the db '$dbname'");
-
-$test_query = "SHOW TABLES FROM $dbname";
-$result = mysqli_query($link, $test_query);
-
-$tblCnt = 0;
-while($tbl = mysqli_fetch_array($result)) {
-  $tblCnt++;
-  #echo $tbl[0]."<br />\n";
+function OpenCon()
+{
+    $dbname = 'userInfo';
+    $dbuser = 'root';
+    $dbpass = '';
+    $dbhost = 'localhost';
+    
+    $link = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die("Unable to Connect to '$dbhost'");
+    
+    return $link;
 }
 
-if (!$tblCnt) {
-  echo "There are no tables<br />\n";
-} else {
-  echo "There are $tblCnt tables<br />\n";
-} 
+function CloseCon($link){
+    $link -> close();
+}
+
 ?>
