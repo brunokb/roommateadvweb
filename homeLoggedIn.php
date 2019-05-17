@@ -118,12 +118,11 @@
                 <div class="starter-template">
                     <h1>Welcome to Roommate</h1>
                     <p class="lead">Connecting Journeys</p>
+                    <button class="btn btn-primary"><a href="register.php">Register</a></button>
                     <?php 
                     echo "<h2>Welcome ".$_SESSION['username'];
                     echo "</h2>";
                     ?>
-                    <!-- Button to open the modal login form -->
-                    <button class="btn btn-primary"><a href="home.php">Log out</a></button>
                     
                 </div>
             </div>
