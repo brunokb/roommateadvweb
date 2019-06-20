@@ -1,31 +1,41 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
     <script type="text/javascript" src="js.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="loginFormCss.css">
+    <script>
+    $(function() {
+        $("#searchAC").autocomplete({
+            source: [ "Melbourne", "Sydney", "London", "Sao Paulo", "New York", "Xangai" ]
+        });
+    });
+    </script>
 </head>
     
 <body>
      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top ">
           <!-- Brand/logo -->
-          <a class="navbar-brand" href="home.php">
+          <a class="navbar-brand" href="index.php">
             <img src="picture/logo%20web.png" alt="logo" style="width:80px;">
           </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
          <div class="search-container">
-            <form action="/action_page.php">
-              <input type="text" placeholder="Search.." name="search">
+            <form action="/booking.php" method="get">
+              <input type="text" name="city" id="searchAC" placeholder="Search" >
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
@@ -56,57 +66,64 @@
                     <div class="banner-top">
                         <h1>For Booking</h1>
                         <div class="banner-bottom">
-                            <div class="bnr-one">
-                                <div class="bnr-left">
-                                    <p>Check In</p>
-                                </div>
-                                <div class="bnr-right">
-                                    <input class="date" id="datepicker" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bnr-one">
-                                <div class="bnr-left">
-                                    <p>Check Out</p>
-                                </div>
-                                <div class="bnr-right">
-                                    <input class="date" id="datepicker1" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bnr-one">
-                                <div class="bnr-left">
-                                    <p>Adults</p>
-                                </div>
-                                <div class="bnr-right">
-                                    <select>
-                                        <option  class="rm" value="volvo">0</option>
-                                        <option  class="rm" value="saab">1</option>
-                                        <option  class="rm" value="opel">2</option>
-                                        <option  class="rm" value="audi">3</option>
-                                    </select>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bnr-one">
-                                <div class="bnr-left">
-                                    <p>Room</p>
-                                </div>
-                                <div class="bnr-right">
-                                    <select>
-                                        <option value="volvo">Select a type</option>
-                                        <option value="saab">Single</option>
-                                        <option value="opel">Double</option>
-                                        <option value="audi">Suite</option>
-                                    </select>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bnr-btn">
-                                <form>
-                                    <input type="submit" value="Book Now">
-                                </form>
-                            </div>
+                                <form action="/booking.php" method="get">
+                                    <div class="bnr-one">
+                                            <div class="bnr-left">
+                                                <p>Check In</p>
+                                            </div>
+                                            <div class="bnr-right">
+                                                <input name="dateIn" type="date" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                    </div>
+                                    <div class="bnr-one">
+                                            <div class="bnr-left">
+                                                <p>Check Out</p>
+                                            </div>
+                                            <div class="bnr-right">
+                                                <input name="dateOut" type="date" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                    </div>
+                                    <div class="bnr-one">
+                                            <div class="bnr-left">
+                                                <p>Adults</p>
+                                            </div>
+                                            <div class="bnr-right">
+                                                <select name="numBed">
+                                                    <option  class="rm" value="zero">0</option>
+                                                    <option  class="rm" value="one">1</option>
+                                                    <option  class="rm" value="two">2</option>
+                                                    <option  class="rm" value="three">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                    </div>
+                                    <div class="bnr-one">
+                                        <div class="bnr-left">
+                                            <p>Room</p>
+                                        </div>
+                                        <div class="bnr-right">
+                                            <select name="roomType">
+                                                <option value="nan">Select a type</option>
+                                                <option value="sin">Single</option>
+                                                <option value="dou">Double</option>
+                                                <option value="sui">Suite</option>
+                                            </select>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="bnr-left">
+                                                <p>City</p>
+                                        </div>
+                                        <div class="bnr-right">
+                                            <input type="text" name="city" placeholder="Search" >
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="bnr-btn">
+                                            <input type="submit" value="Search" id="searchRoom">
+                                    </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -161,10 +178,7 @@
 
 
 <?php
-$dbname = 'id9561485_roommateadvweb';
-$dbuser = 'id9561485_6931';
-$dbpass = 'ait1234@!';
-$dbhost = 'localhost';
+include 'config.php';
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);
 $result = mysqli_query($conn,"SELECT * FROM room");	
 while($row = mysqli_fetch_array($result))
@@ -177,7 +191,7 @@ $picPath = mysqli_query($conn,"SELECT * FROM `imageStore` WHERE `image_ref` = ".
     while($picRow = mysqli_fetch_array($picPath))
     {
 	?>
-		<img src="<?php echo $picRow['img_path']?>" class="img-fluid" />
+		<img src="<?php echo $picRow['img_path']?>" class="img-thumbnail" />
 	<?php 
     }
     ?>
@@ -192,8 +206,8 @@ $picPath = mysqli_query($conn,"SELECT * FROM `imageStore` WHERE `image_ref` = ".
 			</button> 
 		</div>
 		<div class="col text-right align-self-end">
-		    <form action="/hotelinfo.php" method="get">
-    			<button name="room" type="submit" class="btn btn-info btn-sx" value="<?php echo $row['roomID'];?>">More Info >></button>
+		    <form action="/HostedRoomShow.php" method="get">
+    			<button name="roomID" type="submit" class="btn btn-info btn-sx" value="<?php echo $row['roomID'];?>">More Info >></button>
             </form>
 
 		</div>

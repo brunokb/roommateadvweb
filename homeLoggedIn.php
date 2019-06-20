@@ -20,15 +20,15 @@
 <body>
      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
           <!-- Brand/logo -->
-          <a class="navbar-brand" href="home.php">
+          <a class="navbar-brand" href="index.php">
             <img src="picture/logo%20web.png" alt="logo" style="width:80px;">
           </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
          <div class="search-container">
-            <form action="/action_page.php">
-              <input type="text" placeholder="Search.." name="search">
+            <form action="/booking.php" method="get">
+              <input type="text" name="city" id="searchAC" placeholder="Search" >
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
@@ -118,11 +118,12 @@
                 <div class="starter-template">
                     <h1>Welcome to Roommate</h1>
                     <p class="lead">Connecting Journeys</p>
-                    <button class="btn btn-primary"><a href="register.php">Register</a></button>
                     <?php 
                     echo "<h2>Welcome ".$_SESSION['username'];
                     echo "</h2>";
                     ?>
+                    <!-- Button to open the modal login form -->
+                    <button class="btn btn-primary"><a href="home.php">Log out</a></button>
                     
                 </div>
             </div>
